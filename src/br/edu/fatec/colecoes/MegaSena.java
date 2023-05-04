@@ -17,26 +17,39 @@ public class MegaSena {
 		listaAzar.add(7);
 		
 		System.out.println("Informe a quantidade apostas: ");
-		int apostas = scanner.nextInt();
+		int quantidadeAposta = scanner.nextInt();
 		
-		List<Integer> listaAposta = new ArrayList<Integer>();
+		for(int i = 0; i < quantidadeAposta; i++) {
+			//TODO: alterar para lista de apostas
+		}
+		Aposta aposta = gerarAposta(listaAzar);
+		
+		System.out.println(aposta.getDezenas().toString());
+		
+	}
+	
+	public static Aposta gerarAposta(List<Integer> numerosAzar) {
+		
+		Aposta novaAposta = new Aposta();
+		
+		List<Integer> dezenas = new ArrayList<Integer>();
 		
 		for(int i = 0; i < 6; i++) {
 			
 			Integer aposta = (int) (Math.random() * 100);
 			
-			if(aposta <= 0 
-					|| aposta > 60 
-					|| listaAzar.contains(aposta) 
-					|| listaAposta.contains(aposta)) {
+			if(aposta <= 0 || aposta > 60 
+					|| numerosAzar.contains(aposta) 
+					|| dezenas.contains(aposta)) {
 				i--;
 				continue;
 			}
-			listaAposta.add(aposta);
+			dezenas.add(aposta);
 		}
 		
-		System.out.println(listaAposta.toString());
+		novaAposta.setCodigo(10);
+		novaAposta.setDezenas(dezenas);
 		
-		
+		return novaAposta;
 	}
 }
